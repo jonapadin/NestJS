@@ -1,7 +1,7 @@
 /* aca va la logica de negocio de la aplicacion */
 import { Injectable } from '@nestjs/common';
 
-export interface iTrack {
+/*export interface iTrack {
   id: number;
   title: string;
   duration: number;
@@ -51,7 +51,7 @@ export const tracks: iTrack[] = [
     duration: 183,
     artist: 'John Lennon',
   },
-];
+];*/
 
 @Injectable()
 export class AppService {
