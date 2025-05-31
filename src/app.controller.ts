@@ -1,12 +1,12 @@
 import { Controller, Get } from '@nestjs/common';
-import { AppService, iTrack } from './app.service';
+import { AppService } from './app.service';
 
-@Controller()
+@Controller('api')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('api')
-  getTracks(): iTrack[] {
+  @Get()
+  getTracks(): string {
     return this.appService.getTracks();
   }
 }
