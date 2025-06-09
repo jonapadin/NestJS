@@ -7,8 +7,25 @@ const BASE_URL = 'http://localhost:3030/api/tracks';
 
 @Injectable()
 export class TrackService {
+  async getTrackById(id: string): Promise<Track> {
+    const res = await fetch(`${BASE_URL}/${id}`);
+    const parsed = await res.json();
+    return parsed;
+  }
   async getTracks(): Promise<Track[]> {
     const res = await fetch(BASE_URL);
+    const parsed = await res.json();
+    return parsed;
+  }
+
+  async createTrack(track: Track): Promise<Track> {
+    const res = await fetch(BASE_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(track),
+    });
     const parsed = await res.json();
     return parsed;
   }
