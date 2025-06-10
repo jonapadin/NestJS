@@ -17,7 +17,7 @@ export class TrackController {
   }
 
   @Post()
-  createTrack(@Body() track: Track): Promise<Track> {
-    return this.trackService.createTrack(track);
+  createTrack(@Body() body: Track): Promise<Track> {
+    return this.trackService.createTrack(body);
   }
 }

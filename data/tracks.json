@@ -1,46 +1,52 @@
 {
-    "tracks": [
-  {
-    "id": 1,
-    "title": "Stairway to Heaven",
-    "duration": 482,
-    "artist": "Led Zeppelin"
-  },
-  {
-    "id": 2,
-    "title": "Bohemian Rhapsody",
-    "duration": 354,
-    "artist": "Queen"
-  },
-  {
-    "id": 3,
-    "title": "Hotel California",
-    "duration": 391,
-    "artist": "Eagles"
-  },
-  {
-    "id": 4,
-    "title": "Sweet Child O Mine",
-    "duration": 356,
-    "artist": "Guns N Roses"
-  },
-  {
-    "id": 5,
-    "title": "Back in Black",
-    "duration": 255,
-    "artist": "AC/DC"
-  },
-  {
-    "id": 6,
-    "title": "Smells Like Teen Spirit",
-    "duration": 301,
-    "artist": "Nirvana"
-  },
-  {
-    "id": 7,
-    "title": "Imagine",
-    "duration": 183,
-    "artist": "John Lennon"
-  }
-]
+  "tracks": [
+    {
+      "id": "1",
+      "title": "Stairway to Heaven",
+      "duration": 482,
+      "artist": "Led Zeppelin"
+    },
+    {
+      "id": "2",
+      "title": "Bohemian Rhapsody",
+      "duration": 354,
+      "artist": "Queen"
+    },
+    {
+      "id": "3",
+      "title": "Hotel California",
+      "duration": 391,
+      "artist": "Eagles"
+    },
+    {
+      "id": "4",
+      "title": "Sweet Child O Mine",
+      "duration": 356,
+      "artist": "Guns N Roses"
+    },
+    {
+      "id": "5",
+      "title": "Back in Black",
+      "duration": 255,
+      "artist": "AC/DC"
+    },
+    {
+      "id": "6",
+      "title": "Smells Like Teen Spirit",
+      "duration": 301,
+      "artist": "Nirvana"
+    },
+    {
+      "id": "7",
+      "title": "Imagine",
+      "duration": 183,
+      "artist": "John Lennon"
+    },
+    {
+      "id": "11",
+      "title": "Wonderwall",
+      "duration": 143,
+      "artist": "Oasis"
+    }
+  ]
 }

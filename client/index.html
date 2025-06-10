@@ -10,5 +10,30 @@
     <h1 class="title">Hello World!</h1>
     <p class="description">Esta es una página HTML simple.</p>
     <button class="cta-button" onclick="location.href='contacto.html'">Ir a Contacto</button>
+
+    <button id="obtenerDatos">Obtener Datos</button>
+    <ol id="lista-canciones" class="lista-canciones"></ol>
+    <div id="resultado"></div>
+
+
+
+    <form id="form-cancion" class="formulario">
+        <label>
+            Titulo:
+            <input type="text" id="titulo" name="titulo" required>
+        </label>
+        <label>
+            Duración:
+            <input type="number" id="duracion" name="duracion" required>
+        </label>
+        <label>
+            Artista:
+            <input type="text" id="artista" name="artista" required>
+        </label>
+
+        <button type="submit">Agregar Canción</button>
+    </form>
+
+    <script src="js/script.js"></script>
 </body>
 </html>

@@ -34,3 +34,36 @@ body {
     font-size: 100px;
     margin-bottom: 20px;
 }
+
+.lista-canciones{
+    padding-left: 2rem;
+}
+
+.lista-canciones > li {
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.lista-canciones ul {
+    padding-left: 20px
+}
+
+.lista-canciones ul li {
+    list-style-type: disc;
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    gap: 20x;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.formulario input{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    font-size: 18px;
+}
