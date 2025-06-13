@@ -6,12 +6,9 @@ import { join } from 'path';
 import { TrackController } from './track/track.controller';
 import { TrackService } from './track/track.service';
 
+
 @Module({
-  imports: [
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'client'),
-    }),
-  ],
+  imports: [ServeStaticModule.forRoot({ rootPath: join(__dirname, '..', 'client') })],
   controllers: [AppController, TrackController],
   providers: [AppService, TrackService],
 })

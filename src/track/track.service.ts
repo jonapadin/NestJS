@@ -1,25 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Injectable } from '@nestjs/common';
 import { Track } from './track.interface';
 
-const BASE_URL = 'http://localhost:3030/tracks';
-
+const BASE_URL = 'http://localhost:3030/tracks/';
 @Injectable()
 export class TrackService {
-  async getTrackById(id: string): Promise<Track> {
-    const res = await fetch(`${BASE_URL}/${id}`);
-    const parsed = await res.json();
-    return parsed;
-  }
-  async getTracks(): Promise<Track[]> {
-    const res = await fetch(BASE_URL);
-    const parsed = await res.json();
-    return parsed;
-  }
-
   async createTrack(track: Track): Promise<Track> {
     const idn = await this.setId();
+    //const newTrack={id,...track};
     const newTrack: Track = {
       id: idn,
       title: track.title,
@@ -28,10 +16,10 @@ export class TrackService {
     };
     const res = await fetch(BASE_URL, {
       method: 'POST',
+      body: JSON.stringify(newTrack),
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(newTrack),
     });
     const parsed = await res.json();
     return parsed;
@@ -40,6 +28,44 @@ export class TrackService {
   private async setId(): Promise<number> {
     const tracks = await this.getTracks();
     const id = tracks[tracks.length - 1].id + 1;
-    return id;
+    //=tracks[2]
+    return id; //4
+  }
+
+  async getTrackById(id: number): Promise<Track> {
+    const res = await fetch(BASE_URL + id);
+    const parsed = await res.json();
+    return parsed;
+  }
+
+  async getTracks(): Promise<Track[]> {
+    const res = await fetch(BASE_URL);
+    const parsed = await res.json();
+    return parsed;
+  }
+
+  async deleteTrackById(id: number): Promise<Track> {
+    const res = await fetch(BASE_URL + id, {
+      method: 'DELETE',
+    });
+    const parsed = await res.json();
+    return parsed;
+  }
+
+  async updateTrackById(id: number, body: Track): Promise<Track | undefined> {
+    const isTrack = await this.getTrackById(id);
+    if (!Object.keys(isTrack).length) return;
+    const updateTrack = { ...body, id };
+    console.log('Pista actualizada', updateTrack.title);
+
+    const res = await fetch(BASE_URL + id, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updateTrack),
+    });
+    const parsed = await res.json();
+    return parsed;
   }
 }
