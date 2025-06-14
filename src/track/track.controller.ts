@@ -6,6 +6,7 @@ import {
   Body,
   Delete,
   Put,
+  HttpCode,
 } from '@nestjs/common';
 import { TrackService } from './track.service';
 import { Track } from './track.interface';
@@ -20,7 +21,7 @@ export class TrackController {
   }
 
   @Get(':id')
-  getTrackById(@Param('id') id: number): Promise<Track> {
+  getTrackById(@Param('id') id: number): Promise<Track | undefined> {
     return this.trackService.getTrackById(id);
   }
 
@@ -35,6 +36,7 @@ export class TrackController {
   }
 
   @Put(':id')
+  @HttpCode(204)
   updateTrackById(@Param('id') id: number, @Body() body: Track) {
     return this.trackService.updateTrackById(id, body);
   }

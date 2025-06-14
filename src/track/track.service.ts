@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Track } from './track.interface';
 
 const BASE_URL = 'http://localhost:3030/tracks/';
@@ -32,10 +32,16 @@ export class TrackService {
     return id; //4
   }
 
-  async getTrackById(id: number): Promise<Track> {
+  async getTrackById(id: number): Promise<Track | undefined> {
     const res = await fetch(BASE_URL + id);
-    const parsed = await res.json();
-    return parsed;
+
+    try {
+      const parsed = await res.json();
+      if (Object.keys(parsed).length) return parsed;
+    } catch (err) {
+      console.log(err);
+      throw new NotFoundException('No se encontro el recurso');
+    }
   }
 
   async getTracks(): Promise<Track[]> {
@@ -54,7 +60,11 @@ export class TrackService {
 
   async updateTrackById(id: number, body: Track): Promise<Track | undefined> {
     const isTrack = await this.getTrackById(id);
-    if (!Object.keys(isTrack).length) return;
+
+    if (!isTrack || !Object.keys(isTrack).length) {
+      console.warn('el track de id ${id} no existe');
+      return;
+    }
     const updateTrack = { ...body, id };
     console.log('Pista actualizada', updateTrack.title);
 
@@ -65,7 +75,11 @@ export class TrackService {
       },
       body: JSON.stringify(updateTrack),
     });
-    const parsed = await res.json();
-    return parsed;
+
+    if (!res.ok) {
+      return;
+    }
+    //const parsed = await res.json();
+    //return parsed;
   }
 }

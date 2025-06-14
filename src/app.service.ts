@@ -31,8 +31,6 @@ export const tracks: iTrack[] = [ //no es lo de ideal, es solo de prueba
 @Injectable()
 export class AppService {
   getTracks(): string {
-    return "hola";
+    return 'hola';
   }
-
-
 }
